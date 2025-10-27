@@ -102,7 +102,7 @@
 	\Gamma_{\alpha,\mu\nu} &= g_{\alpha\beta}\Gamma^\beta_{\mu\nu} = \frac{1}{2}\qty(\pdv{g_{\alpha\nu}}{x^\mu} + \pdv{g_{\alpha\mu}}{x^\nu} - \pdv{g_{\mu\nu}}{x^\alpha})
 \end{align}
 
-ここで式\ref{eq:metric}、\ref{eq:nmudown}式\ref{eq:nmuup}と直前の4式を用いて、外部曲率$K_{ij}$を計算すると
+ここで式\eqref{eq:metric}、\eqref{eq:nmudown}式\eqref{eq:nmuup}と直前の4式を用いて、外部曲率$K_{ij}$を計算すると
 \begin{align}
 	K_{ij} &= -(\delta_i^\mu + n^\mu n_i)(\delta_j^\nu + n^\nu n_j)n_{\mu;\nu}\nonumber\\
 	&= -(\delta_i^\mu \delta_j^\nu + n^\mu n_i \delta_j^\nu + \delta_i^\mu n^\nu n_j + n^\mu n_i n^\nu n_j)n_{\mu;\nu}\nonumber\\
@@ -119,27 +119,56 @@
 \end{align}
 と計算できる。この式は普通
 \begin{align}
-	\pdv{\gamma_{ij}}{t} = -2\alpha K_{ij} + \beta_{i|j} + \beta_{j|i}
+	\pdv{\gamma_{ij}}{t} = -2\alpha K_{ij} + \beta_{i|j} + \beta_{j|i}\label{eq:gamma_evolution}
 \end{align}
 と書くことが多いらしい。
 
 さて、アインシュタイン方程式を初基地問題として考えるためには、アインシュタイン方程式を時間方向と空間方向に射影することを考える。射影の仕方は3通りあるらしい。添え字をそれぞれ1）両方時間方向、2）片方時間方向、3）両方空間方向である。それぞれに対応して
 \begin{align}
-	1) \quad & G_{\mu\nu}n^\mu n^\nu = 8\pi \rho_H = 8\pi T_{\mu\nu}n^\mu n^\nu\\
-	2) \quad & G_{\mu\nu}n^\mu P^\nu_i = -8\pi J_i = 8\pi T_{\mu\nu}n^\mu P^\nu_i\\
-	3) \quad & G_{\mu\nu}P^\mu_i P^\nu_j = 8\pi S_{ij} = 8\pi T_{\mu\nu}P^\mu_i P^\nu_j
+	1) \quad & G_{\mu\nu}n^\mu n^\nu = 8\pi \rho_H = 8\pi T_{\mu\nu}n^\mu n^\nu\label{eq:energy_constraint}\\
+	2) \quad & G_{\mu\nu}n^\mu P^\nu_i = -8\pi J_i = 8\pi T_{\mu\nu}n^\mu P^\nu_i\label{eq:momentum_constraint}\\
+	3) \quad & G_{\mu\nu}P^\mu_i P^\nu_j = 8\pi S_{ij} = 8\pi T_{\mu\nu}P^\mu_i P^\nu_j\label{eq:space_space}
 \end{align}
 これらの変数はそれぞれ、$\rho_H$はエネルギー密度、$J_i$は運動量密度、$S_{ij}$は圧力テンソルである。
 
-さて、それぞれの式を$\alpha$、$\beta^i$、$\gamma_{ij}$で表現しようと頑張って計算すると次のようになる。
+さて、それぞれの式を$\alpha$、$\beta^i$、$\gamma_{ij}$で表現しようと頑張って計算すると次のようになる。(付録b参照)
 \begin{align}
-	1) \quad & ^{(3)}R + K^2 - K_{ij}K^{ij} = 16\pi \rho_H\\
+	1) \quad & ^{(3)}R + K^2 - K_{ij}K^{ij} = 16\pi \rho_H
+	\label{eq:hamiltonan_kousoku}\\
 	2) \quad & K^j_{i|j} - K_{|i} = 8\pi J_i
+	\label{eq:momentum_kousoku}
 \end{align}
 \begin{align}
-	3) \quad  \pdv{K_{ij}}{t} = & \alpha \qty(^{(3)}R_{ij} + K K_{ij} ) -2\alpha K_{il}K^l_j\\
+	3) \quad  \pdv{K_{ij}}{t} = & \alpha \qty(^{(3)}R_{ij} + K K_{ij} ) -2\alpha K_{il}K^l_j\nonumber\\
 	& -8\pi\alpha\qty( S_{ij} + \frac{1}{2}\gamma_{ij}(\rho_H-S^l_l)) -\alpha_{|ij} \\
 	& + \beta^m_{|j} K_{mi} + \beta^m_{|i} K_{mj} + \beta^m K_{ij|m}
+	\label{eq:evolution_equation}
 \end{align}
+ここで式\eqref{eq:hamiltonan_kousoku}はハミルトニアン拘束方程式、式\eqref{eq:momentum_kousoku}は動量拘束方程式、式\eqref{eq:hamiltonan_kousoku}から式\eqref{eq:evolution_equation}はアインシュタイン方程式の(3+1)次元形式と呼ぶ。
+ここで、式\eqref{eq:hamiltonan_kousoku}は1本の式、式\eqref{eq:momentum_kousoku}は3本の式、式\eqref{eq:evolution_equation}は6本の式からなり、合わせて10本の方程式になる。アインシュタイン方程式も10本の方程式であったので、対応していることが分かる。
+空間的な式\eqref{eq:hamiltonan_kousoku}と式\eqref{eq:momentum_kousoku}いて、時間的な式\eqref{eq:evolution_equation}と式\eqref{eq:gamma_evolution}を用いて時間発展を計算すると初期値問題としてアインシュタイン方程式を解いたことになる、
+
+また、流体力学の方程式がどのように表現されているのかを確認する。ビアンキ恒等式$G_{\mu}^{\nu}{}_{;\nu}=0$より、流体の運動式
+\begin{align}
+	T_{\mu}^{\nu}{}_{;\nu} = 0
+\end{align}
+が導かれる。ただし、ここでの$G$はアインシュタインテンソルで時空の曲がり具合を表し、$T$はエネルギー運動量テンソルである。ビアンキ恒等式は一般相対論の本を読むと出てくるらしい。
+
+アインシュタイン方程式の(3+1)次元表現では$\rho_H, J_i, S_{ij}$が現れたので流体力学の式をこれらの変数で表現する。エネルギー運動量テンソル$T_{\mu\nu}$は式\eqref{eq:energy_constraint}、\eqref{eq:momentum_constraint}、\eqref{eq:space_space}より
+\begin{align}
+	T_{\mu\nu}& = g_{\mu\alpha}g_{\nu\beta}T^{\alpha\beta}\nonumber\\
+	&=(P_{\mu\alpha} - n_\mu n_\alpha)(P_{\nu\beta} - n_\nu n_\beta)T^{\alpha\beta}\nonumber\\
+	&=P_{\mu\alpha}P_{\nu\beta}T^{\alpha\beta} - n_\mu n_\alpha P_{\nu\beta}T^{\alpha\beta} - n_\nu n_\beta P_{\mu\alpha}T^{\alpha\beta} + n_\mu n_\nu n_\alpha n_\beta T^{\alpha\beta}\nonumber\\
+	&= S_{\mu\nu} + n_\mu J_\nu + n_\nu J_\mu +\rho_H n_\mu n_\nu 
+\end{align}
+がわかる。
+
+ここで、アインシュタイン方程式の時と同様
+
+\section*{第二章 重力波}
+\subsection*{2-1 重力波の整形理論}
+
+
+
 
 \end{document}
