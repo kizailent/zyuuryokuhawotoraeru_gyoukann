@@ -150,7 +150,7 @@
 
 また、流体力学の方程式がどのように表現されているのかを確認する。ビアンキ恒等式$G_{\mu}^{\nu}{}_{;\nu}=0$より、流体の運動式
 \begin{align}
-	T_{\mu}^{\nu}{}_{;\nu} = 0
+	T_{\mu}^{\nu}{}_{;\nu} = 0\label{eq:fluid_equation_tensor}
 \end{align}
 が導かれる。ただし、ここでの$G$はアインシュタインテンソルで時空の曲がり具合を表し、$T$はエネルギー運動量テンソルである。ビアンキ恒等式は一般相対論の本を読むと出てくるらしい。
 
@@ -163,7 +163,25 @@
 \end{align}
 がわかる。
 
-ここで、アインシュタイン方程式の時と同様にがんばって
+ここで、エネルギー運動量テンソルを$n^\mu$方向(時間方向)と$P_i^\mu$方向に射影して式\eqref{eq:fluid_equation_tensor}を表現する。まず、時間方向は
+\begin{align}
+	n^\mu T_{\mu}^{\nu}{}_{;\nu} = 0
+\end{align}
+であるので、
+\begin{align}
+	0 = (n^\mu T_{\mu}^{\nu})_{;\nu} - T_{\mu}^{\nu} n^\mu{}_{;\nu} 
+\end{align}
+まず、$n^\mu T_{\mu}^{\nu}$を計算すると
+\begin{align}
+	n^\mu T_{\mu}^{\nu} &= n^\mu \qty( S_{\mu}^{\nu} + n_\mu J^{\nu} + n^{\nu} J_\mu + \rho_H n_\mu n^{\nu} )\nonumber\\
+	&= 
+\end{align}
+
+\begin{align}
+	&\pdv{t}\qty(\sqrt{\gamma}\rho_H) + \pdv{x^l}\qty(\sqrt{\gamma}\rho_H V^l)\nonumber\\
+	&=-\pdv{x^l}\qty(\sqrt{\gamma}p(V^l+\beta^l)) +\alpha\sqrt{\gamma}pK - \pdv{\alpha}{x^l}\sqrt{\gamma}J^l+\frac{\alpha\sqrt{\gamma}J^lJ^m K_{lm}}{\rho_H + p}
+\end{align}
+
 
 \section*{第二章 重力波}
 \subsection*{2-1 重力波の整形理論}

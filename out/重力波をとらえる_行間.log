@@ -1,10 +1,10 @@
-This is e-upTeX, Version 3.141592653-p4.1.0-u1.29-230214-2.6 (utf8.euc) (TeX Live 2023/Debian) (preloaded format=platex 2025.10.24)  27 OCT 2025 12:19
+This is e-upTeX, Version 3.141592653-p4.1.0-u1.29-230214-2.6 (utf8.euc) (TeX Live 2023/Debian) (preloaded format=platex 2025.2.20)  27 OCT 2025 19:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/egami/Document/行間埋め/重力波をとらえる/重力波をとらえる_行間.tex
-(/home/egami/Document/行間埋め/重力波をとらえる/重力波をとらえる_行間.tex
+**/home/kilen/Document/行間埋める/重力波をとらえる/重力波をとらえる_行間.tex
+(/home/kilen/Document/行間埋める/重力波をとらえる/重力波をとらえる_行間.tex
 pLaTeX2e <2023-02-14>+1, based on
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -451,12 +451,12 @@ Package rerunfilecheck Info: File `重力波をとらえる_行間.out' has not 
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 12003 strings out of 474880
- 182701 string characters out of 5763302
+ 12004 strings out of 475916
+ 182735 string characters out of 5788117
  1940820 words of memory out of 5000000
- 34097 multiletter control sequences out of 15000+600000
+ 34006 multiletter control sequences out of 15000+600000
  577627 words of font info for 123 fonts, out of 8000000 for 9000
- 934 hyphenation exceptions out of 8191
- 79i,15n,93p,417b,341s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 314 hyphenation exceptions out of 8191
+ 79i,15n,93p,420b,341s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on out/重力波をとらえる_行間.dvi (4 pages, 21532 bytes).
+Output written on out/重力波をとらえる_行間.dvi (4 pages, 23680 bytes).
