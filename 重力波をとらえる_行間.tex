@@ -69,8 +69,9 @@
 
 空間方向への射影テンソルとは、時間方向への成分、つまり$n^\mu$の成分を取り除く働きをするテンソルである。確かめると、
 \begin{align}
-	P_{\mu\nu}n^\nu &= \qty(g_{\mu\nu} + n_\mu n_\nu)n^\nu = n_\mu + n_\mu (n_\nu n^\nu) = n_\mu - n_\mu = 0,\\
-	P^\mu_\nu n^\nu &= \qty(\delta^\mu_\nu + n^\mu n_\nu)n^\nu = n^\mu + n^\mu (n_\nu n^\nu) = n^\mu - n^\mu = 0
+	P_{\mu\nu}n^\nu &= \qty(g_{\mu\nu} + n_\mu n_\nu)n^\nu = n_\mu + n_\mu (n_\nu n^\nu) = n_\mu - n_\mu = 0,
+	\label{eq:kuukan_zikan}\\
+	P^\mu_\nu n^\nu &= \qty(\delta^\mu_\nu + n^\mu n_\nu)n^\nu = n^\mu + n^\mu (n_\nu n^\nu) = n^\mu - n^\mu = 0  \label{eq:kuukan_zikan_up}
 \end{align}
 より確かめられる。
 
@@ -171,11 +172,42 @@
 \begin{align}
 	0 = (n^\mu T_{\mu}^{\nu})_{;\nu} - T_{\mu}^{\nu} n^\mu{}_{;\nu} 
 \end{align}
-まず、$n^\mu T_{\mu}^{\nu}$を計算すると
+まず、$n^\mu T_{\mu}^{\nu}$を計算すると式\eqref{eq:momentum_constraint}、\eqref{eq:space_space}と式\eqref{eq:kuukan_zikan}より、$n^\mu S_{\mu}^{\nu} = 0$、$n^\mu J_\mu = 0$であることを用いると
 \begin{align}
 	n^\mu T_{\mu}^{\nu} &= n^\mu \qty( S_{\mu}^{\nu} + n_\mu J^{\nu} + n^{\nu} J_\mu + \rho_H n_\mu n^{\nu} )\nonumber\\
-	&= 
+	&= n^\mu S_{\mu}^{\nu} + n^\mu n_\mu J^{\nu} + n^{\nu} n^\mu J_\mu + \rho_H n^\mu n_\mu n^{\nu} \nonumber\\
+	&= - J^{\nu} -\rho_H n^{\nu}
 \end{align}
+
+これを共変微分するが求めたいのはその発散であるから、一般的なベクトルの発散の式を示すと
+\begin{align}
+	A^\mu{}_{;\mu} = \frac{1}{\sqrt{-g}}\pdv{x^\mu}\qty(\sqrt{-g}A^\mu)
+\end{align}
+となるということを用いる。（ここは頑張れ）ここで$g$は計量テンソルの行列式である。これを求めると
+\begin{align}
+	g &= \det(g_{\mu\nu}) \nonumber\\
+	&= \det\pmqty{ -\alpha^2 + \beta_i\beta^i & \beta_j\\ \beta_i & \gamma_{ij} } \nonumber\\
+	&= -\alpha^2 \det(\gamma_{ij}) \nonumber\\
+	&= -\alpha^2 \gamma
+\end{align}
+と分かるのでこれらを代入すると
+\begin{align}
+	(n^\mu T_{\mu}^{\nu})_{;\nu} &= \frac{1}{\sqrt{-g}}\pdv{x^\nu}\qty(\sqrt{-g}n^\mu T_{\mu}^{\nu})\nonumber\\
+	&= \frac{1}{\alpha\sqrt{\gamma}}\pdv{x^\nu}\qty(\alpha\sqrt{\gamma}(- J^{\nu} -\rho_H n^{\nu}))\nonumber\\
+	&= -\frac{1}{\alpha\sqrt{\gamma}}\pdv{x^\nu}\qty(\alpha\sqrt{\gamma} J^{\nu}) - \frac{1}{\alpha\sqrt{\gamma}}\pdv{x^\nu}\qty(\alpha\sqrt{\gamma}\rho_H n^{\nu})\nonumber\\
+	&= -\frac{1}{\alpha\sqrt{\gamma}}\pdv{x^\ell}\qty(\alpha\sqrt{\gamma} J^{\ell}) + \frac{1}{\alpha\sqrt{\gamma}}\pdv{t}\qty(\sqrt{\gamma}\rho_H) + \frac{1}{\alpha\sqrt{\gamma}}\pdv{x^\ell}\qty(\sqrt{\gamma}\rho_H \beta^\ell)
+\end{align}
+が分かる。
+
+また、ここで完全流体を想定することなどにより
+\begin{align}
+	T_{\mu\nu} = (\rho(1+\epsilon) + p)u_\mu u_\nu + p g_{\mu\nu}\\
+	V^{\ell} = \frac{\alpha J^{\ell}}{\rho_H + p} - \beta^{\ell} = \frac{u^{\ell}}{u^0}
+\end{align}
+と定義して考える、すると、$T_{\mu}^{\nu} n^\mu{}_{;\nu}$は
+・・・
+
+付録b参照
 
 \begin{align}
 	&\pdv{t}\qty(\sqrt{\gamma}\rho_H) + \pdv{x^l}\qty(\sqrt{\gamma}\rho_H V^l)\nonumber\\
@@ -185,7 +217,25 @@
 
 \section*{第二章 重力波}
 \subsection*{2-1 重力波の整形理論}
+全勝で初基地問題として考えたアインシュタイン方程式の中には4つの自由度が存在する。ここでは、その自由度を取り出す。物質がないとして$T_{\mu\nu}=0$とすると、アインシュタイン方程式は
+\begin{align}
+	R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R = 0
+\end{align}
+となるいま、計量テンソル$g_{\mu\nu}$がミンコフスキー空間の計量$\eta_{\mu\nu}$から小さくずれたものであると仮定する。つまり、
+\begin{align}
+	g_{\mu\nu} = \eta_{\mu\nu} + h_{\mu\nu}
+\end{align}
+とする。ここでは$\epsilon$の一次に比例する量だけ取り扱う線形理論を展開する。
 
+アインシュタイン方程式を$h_{\mu\nu}$で表現するために、リーマンテンソルを考えると
+\begin{align}
+	R_{\mu\nu\alpha\beta} &= \frac{1}{2}\qty(\pdv{^2 g_{\mu\beta}}{x^\nu \partial x^\alpha} + \pdv{^2 g_{\nu\alpha}}{x^\mu \partial x^\beta}  - \pdv{^2 g_{\nu\beta}}{x^\mu \partial x^\alpha}- \pdv{^2 g_{\mu\alpha}}{x^\nu \partial x^\beta}) + (\Gamma_{\rho,\nu\beta}\Gamma^\rho_{\mu\alpha} - \Gamma_{\rho,\mu\beta}\Gamma^\rho_{\nu\alpha})
+\end{align}
+ここで、クリストッフェル記号は$\epsilon$の1次のオーダーなので、クリストッフェルの2次のオーダーの項は無視できる。よって、
+\begin{align}
+	R_{\mu\nu\alpha\beta} {}^{(1)}&= \frac{1}{2}\qty(\pdv{^2 g_{\mu\beta}}{x^\nu \partial x^\alpha} + \pdv{^2 h_{\nu\alpha}}{x^\mu \partial x^\beta}  - \pdv{^2 h_{\nu\beta}}{x^\mu \partial x^\alpha}- \pdv{^2 h_{\mu\alpha}}{x^\nu \partial x^\beta})\nonumber\\
+	&= \frac{1}{2}\qty(\partial_\nu \partial_\alpha h_{\mu\beta} + \partial_\mu \partial_\beta h_{\nu\alpha} - \partial_\mu \partial_\alpha h_{\nu\beta} - \partial_\nu \partial_\beta h_{\mu\alpha})
+\end{align}
 
 
 
