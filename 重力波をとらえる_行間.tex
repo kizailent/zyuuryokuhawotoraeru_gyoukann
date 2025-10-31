@@ -217,9 +217,10 @@
 
 \section*{第二章 重力波}
 \subsection*{2-1 重力波の整形理論}
-全勝で初基地問題として考えたアインシュタイン方程式の中には4つの自由度が存在する。ここでは、その自由度を取り出す。物質がないとして$T_{\mu\nu}=0$とすると、アインシュタイン方程式は
+全勝で初期値問題として考えたアインシュタイン方程式の中には4つの自由度が存在する。ここでは、その自由度を取り出す。物質がないとして$T_{\mu\nu}=0$とすると、アインシュタイン方程式は
 \begin{align}
 	R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R = 0
+	\label{eq:einstein_equation}
 \end{align}
 となるいま、計量テンソル$g_{\mu\nu}$がミンコフスキー空間の計量$\eta_{\mu\nu}$から小さくずれたものであると仮定する。つまり、
 \begin{align}
@@ -236,6 +237,61 @@
 	R_{\mu\nu\alpha\beta} {}^{(1)}&= \frac{\epsilon}{2}\qty(h_{\mu\beta,\nu\alpha} + h_{\nu\alpha,\mu\beta} - h_{\nu\beta,\mu\alpha}- h_{\mu\alpha,\nu\beta})
 \end{align}
 
+ここからリッチテンソルを求めるには、$g^{\mu\alpha}$をかけて、縮約を取る必要がある。反変計量テンソルは
+\begin{align}
+	g^{\mu\nu} g_{\nu\alpha} = \delta^\mu_\alpha
+\end{align}
+より、
+\begin{align}
+	g^{\mu\nu} = \eta^{\mu\nu} - \epsilon h^{\mu\nu}
+\end{align}
+と表現できる。よって、添え字の上げ下げをする際には計量テンソルを使用して良い。
+
+リッチテンソルは
+\begin{align}
+	R_{\nu\beta} {}^{(1)} &= g^{\mu\alpha} R_{\mu\nu\alpha\beta} {}^{(1)} \nonumber\\
+	&= \frac{\epsilon}{2}\qty(\eta^{\mu\alpha} (h_{\mu\beta,\nu\alpha} + h_{\nu\alpha,\mu\beta} - h_{\nu\beta,\mu\alpha}- h_{\mu\alpha,\nu\beta})) \nonumber\\
+	&= \frac{\epsilon}{2}\qty( h^{\mu}{}_{\beta,\nu\mu} + h^\mu{}_{\nu,\mu\beta} - h_{\nu\beta,\mu}{}^{,\mu} - h^\mu{}_{\mu,\nu\beta})
+	\label{eq:ricci_tensor}
+\end{align}
+となる。ここで、
+\begin{align}
+	h_{\nu\beta,\mu}{}^{,\mu} = \eta^{\mu\alpha} h_{\nu\beta,\mu\alpha}=\Box h_{\nu\beta}= -\pdv{^2 h_{\nu\beta}}{t^2} +\nabla^2 h_{\nu\beta}
+\end{align}
+である。
+
+これをさらに、$\nu$と$\beta$で縮約してスカラー曲率$R$を求めると
+\begin{align}
+	R^{(1)} &= g^{\nu\beta} R_{\nu\beta} {}^{(1)} \nonumber\\
+	&= \frac{\epsilon}{2}\qty(\eta^{\nu\beta} ( h^{\mu}{}_{\beta,\nu\mu} + h^\mu{}_{\nu,\mu\beta} - h_{\nu\beta,\mu}{}^{,\mu} - h^\mu{}_{\mu,\nu\beta})) \nonumber\\
+	&= \frac{\epsilon}{2}\qty( h^{\mu\beta}{}_{,\beta\mu} + h^{\mu\beta}{}_{,\mu\beta} - h^{\beta}{}_{\beta,\mu}{}^{,\mu} - h^{\mu}{}_{\mu,\beta}{}^{,\beta}) \nonumber\\
+	&= \epsilon \qty( h^{\mu\beta}{}_{,\beta\mu} - h^{\mu}{}_{\mu,\beta}{}^{,\beta})\nonumber\\
+	&= \epsilon \qty( h^{\mu}{}_{\beta,}{}^{\beta}{}_{\mu} - h^{\mu}{}_{\mu}{}^{,\beta}{}_{\beta}) 
+	\label{eq:scalar_curvature}
+\end{align}
+となる。
+
+式\eqref{eq:ricci_tensor}と式\eqref{eq:scalar_curvature}を用いてアインシュタイン方程式\eqref{eq:einstein_equation}を表現すると
+\begin{align}
+	R_{\mu\nu} {}^{(1)} - \frac{1}{2}\eta_{\mu\nu} R^{(1)} = 0\nonumber\\
+	\frac{\epsilon}{2}\qty( h^{\rho}{}_{\mu,\rho\nu} + h^\rho{}_{\nu,\rho\mu} - h_{\mu\nu}{}^{,\rho}{}_{,\rho} - h^\rho{}_{\rho,\mu\nu}) - \frac{1}{2}\eta_{\mu\nu} \epsilon \qty( h^{\rho}{}_{\sigma,}{}^{\sigma}{}_{\rho} - h^{\sigma}{}_{\sigma,}{}^{\rho}{}_{\rho}) = 0\nonumber\\
+	h^{\rho}{}_{\mu,\rho\nu} + h^\rho{}_{\nu,\rho\mu} - h_{\mu\nu}{}^{,\rho}{}_{,\rho} - h^\rho{}_{\rho,\mu\nu} - \eta_{\mu\nu} \qty( h^{\rho}{}_{\sigma,}{}^{\sigma}{}_{\rho} - h^{\sigma}{}_{\sigma,}{}^{\rho}{}_{\rho}) = 0
+	\label{eq:linearized_einstein_equation}
+\end{align}
+
+ここで$\bar{h}_{\mu\nu}$を
+\begin{align}
+	\bar{h}_{\mu\nu}& \equiv h^{\mu\nu} - \frac{1}{2}\eta_{\mu\nu} h^\rho{}_\rho\\
+	h &\equiv h^\rho{}_\rho	
+\end{align}
+で定義するとこの定義から
+\begin{align}
+	\bar{h} &= \eta^{\mu\nu}\bar{h}_{\mu\nu}\nonumber\\
+	&= h^{\mu\nu}\eta_{\mu\nu} - \frac{1}{2}\eta^{\mu\nu}\eta_{\mu\nu} h\nonumber\\
+	&= h - 2h\nonumber\\
+	&= -h\\
+	h_{\mu\nu} &= 
+\end{align}
 
 
 \end{document}
